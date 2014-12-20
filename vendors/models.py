@@ -2,6 +2,12 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
+class Inventory(models.Model):
+    inventory_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.inventory_name
+        
 class Vendor(models.Model):
     #picklist of vendor types
     VENDOR_TYPES = (
@@ -21,7 +27,7 @@ class Vendor(models.Model):
     vendor_blurb = models.TextField('Short Blurb', max_length=400, default='empty')
     vendor_internal_pov = models.TextField('Internal POV', max_length=1000, default='empty')
     vendor_external_pov = models.TextField('External POV', max_length=1000, default='empty')
-
+    integrated_inventory_sources = models.ManyToManyField(Inventory)
         
     def __str__(self):
         return self.vendor_name
@@ -31,9 +37,3 @@ class Vendor(models.Model):
         return now - datetime.timedelta(days=1) <= self.added_date <= now
         
 
-class Inventory(models.Model):
-    inventory_name = models.CharField(max_length=200)
-    integrated_vendor = models.ManyToManyField(Vendor)
-    
-    def __str__(self):
-        return self.inventory_name

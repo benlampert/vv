@@ -1,0 +1,16 @@
+
+{% if inventory_sources %}
+    <ul>
+    {% for source in inventory_sources %}
+        <li>{{ source }}</li>
+        Integrated Platforms:
+        {% for vendor in source.vendor_set.all %}
+          <ul>
+            <li>{{ vendor }} </li>
+            </ul>
+        {%endfor%}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No vendors are available.</p>
+{% endif %}

@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     # url(r'^$', views.IndexView, name='index'),
     url(r'^$', views.VendorListView.as_view(), name='vendors'),
     url(r'^(?P<pk>\d+)/$', views.VendorDetailView.as_view(), name='detail'),
+    url(r'^inventory/$', views.InventoryListView.as_view(), name='inventory'),
 )
