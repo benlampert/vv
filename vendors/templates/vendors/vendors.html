@@ -1,0 +1,9 @@
+{% if latest_vendor_list %}
+    <ul>
+    {% for vendor in latest_vendor_list %}
+        <li><a href="/vendors/{{vendor.id }}/">{{ vendor.vendor_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No vendors are available.</p>
+{% endif %}
