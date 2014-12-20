@@ -1,5 +1,5 @@
 from django.contrib import admin
-from vendors.models import Vendor
+from vendors.models import Vendor, Inventory
 from django.forms import TextInput, Textarea
 from django.db import models
 
@@ -12,3 +12,4 @@ from django.db import models
 #     }
 
 admin.site.register(Vendor)
+admin.site.register(Inventory)
