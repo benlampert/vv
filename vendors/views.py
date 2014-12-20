@@ -6,8 +6,12 @@ from django.views import generic
 from vendors.models import Vendor
 # Create your views here.
 
-class IndexView(generic.ListView):
-    template_name = 'vendors/index.html'
+# class IndexView(generic.ListView):
+#     template_name = 'vendors/index.html'
+#     context_object_name = 'latest_vendor_list'
+
+class VendorListView(generic.ListView):
+    template_name = 'vendors/vendors.html'
     context_object_name = 'latest_vendor_list'
 
     def get_queryset(self):
@@ -15,6 +19,6 @@ class IndexView(generic.ListView):
         return Vendor.objects.order_by('-added_date')[:5]
 
 
-class DetailView(generic.DetailView):
+class VendorDetailView(generic.DetailView):
     model = Vendor
     template_name = 'vendors/detail.html'

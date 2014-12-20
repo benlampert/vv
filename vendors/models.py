@@ -14,12 +14,13 @@ class Vendor(models.Model):
     ('ADS', 'Ad Server'),
 )
     vendor_name = models.CharField(max_length=200)
-    added_date = models.DateTimeField('date_added', default=timezone.now())
-    vendor_type = models.CharField('vendor_type', max_length=100,choices=VENDOR_TYPES, default=('EMPTY', 'Update'))
-    vv_contract = models.BooleanField('is_vv', default=0)
-    vendor_blurb = models.CharField('vendor_blurb', max_length=400, default='empty')
-    vendor_internal_pov = models.CharField('vendor_internal_pov', max_length=1000, default='empty')
-    vendor_external_pov = models.CharField('vendor_external_pov', max_length=1000, default='empty')
+    added_date = models.DateTimeField('Date Added', default=timezone.now())
+    vendor_type = models.CharField('Category', max_length=100,choices=VENDOR_TYPES, default=('EMPTY', 'Update'))
+    vv_contract = models.BooleanField('Is Vivaki Verified', default=0)
+    vv_nda = models.BooleanField('Vivaki NDA signed', default=0)
+    vendor_blurb = models.TextField('Short Blurb', max_length=400, default='empty')
+    vendor_internal_pov = models.TextField('Internal POV', max_length=1000, default='empty')
+    vendor_external_pov = models.TextField('External POV', max_length=1000, default='empty')
     
     def __str__(self):
         return self.vendor_name
