@@ -1,8 +1,8 @@
 
-{% if inventory_sources %}
+{% if data_sources %}
     <ul>
-    {% for source in inventory_sources %}
-        <li><a href="/inventory/{{source.id }}/">{{ source }}</a></li>
+    {% for source in data_sources %}
+        <li><a href="/data/{{source.id }}/">{{ source }}</a></li>
         Integrated Platforms:
         {% for vendor in source.vendor_set.all %}
           <ul>

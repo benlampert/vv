@@ -1,0 +1,7 @@
+<h1>{{ data_source.data_source_name }}</h1>
+Integrated Platforms</br>
+<ul>
+    {% for vendor in data_source.vendor_set.all %}
+    <li>{{ vendor }} </li>
+    {% endfor %}
+</ul>

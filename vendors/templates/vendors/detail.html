@@ -6,7 +6,15 @@
     <li>Vivaki NDA in place: {{ vendor.vv_nda }}</li>
     <li>Inventory Sources: <br />
     {% for source in vendor.integrated_inventory_sources.all %}
-    {{source}}</br>
+    <ul> <li> <a href="/inventory/{{source.id }}/">{{source}}</a></li></ul>
+    {%endfor%}</li>
+    <li>Data Sources: <br />
+    {% for source in vendor.integrated_data_sources.all %}
+    <ul> <li> <a href="/data/{{source.id }}/">{{source}}</a></li></ul>
+    {%endfor%}</li>
+        <li>Adservers: 
+    {% for source in vendor.integrated_adservers.all %}
+   <ul> <li><a href="/adserver/{{source.id }}/">{{source}}</a></li></ul>
     {%endfor%}</li>
     
    

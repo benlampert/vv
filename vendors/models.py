@@ -7,6 +7,30 @@ class Inventory(models.Model):
 
     def __str__(self):
         return self.inventory_name
+    class Meta:
+        verbose_name_plural = "Inventory Sources"
+        verbose_name = "Inventory Source"
+
+class Data_Source(models.Model):
+    data_source_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.data_source_name
+    
+    class Meta:
+        verbose_name_plural = "Data Sources"
+        verbose_name = "Data Source"
+
+class Adserver(models.Model):
+    adserver_name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.adserver_name
+    
+    class Meta:
+        verbose_name_plural = "Ad Servers"
+        verbose_name = "Ad Server"
+
         
 class Vendor(models.Model):
     #picklist of vendor types
@@ -28,12 +52,17 @@ class Vendor(models.Model):
     vendor_internal_pov = models.TextField('Internal POV', max_length=1000, default='empty')
     vendor_external_pov = models.TextField('External POV', max_length=1000, default='empty')
     integrated_inventory_sources = models.ManyToManyField(Inventory)
-        
+    integrated_data_sources = models.ManyToManyField(Data_Source)
+    integrated_adservers = models.ManyToManyField(Adserver)
+    
     def __str__(self):
         return self.vendor_name
     
-    def was_added_recently(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.added_date <= now
-        
+    # def was_added_recently(self):
+    #     now = timezone.now()
+    #     return now - datetime.timedelta(days=1) <= self.added_date <= now
+    
+    class Meta:
+        verbose_name_plural = "Platforms"
+        verbose_name = "Platform"
 

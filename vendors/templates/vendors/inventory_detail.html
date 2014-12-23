@@ -1,0 +1,7 @@
+<h1>{{ inventory.inventory_name }}</h1>
+Integrated Platforms</br>
+<ul>
+    {% for vendor in inventory.vendor_set.all %}
+    <li>{{ vendor }} </li>
+    {% endfor %}
+</ul>

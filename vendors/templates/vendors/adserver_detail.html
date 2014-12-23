@@ -1,0 +1,7 @@
+<h1>{{ adserver.adserver_name }}</h1>
+Integrated Platforms</br>
+<ul>
+    {% for vendor in adserver.vendor_set.all %}
+    <li>{{ vendor }} </li>
+    {% endfor %}
+</ul>

@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^', include('vendors.urls')),
     url(r'^vendors/', include('vendors.urls')),
     url(r'^inventory/', include('vendors.urls')),
+    url(r'^data/', include('vendors.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
