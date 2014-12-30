@@ -9,31 +9,24 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vendors', '0017_auto_20141228_1035'),
+        ('vendors', '0015_auto_20141223_1427'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Evaluations',
+            name='Evaluation',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('evaluation_name', models.CharField(max_length=200)),
-                ('question', models.ManyToManyField(to='vendors.Question')),
+                ('eval_name', models.CharField(default=b'new evaluation', max_length=100)),
             ],
             options={
             },
             bases=(models.Model,),
         ),
         migrations.AlterField(
-            model_name='evaluation',
-            name='question',
-            field=models.ForeignKey(to='vendors.Question'),
-            preserve_default=True,
-        ),
-        migrations.AlterField(
             model_name='vendor',
             name='added_date',
-            field=models.DateTimeField(default=datetime.datetime(2014, 12, 28, 15, 45, 52, 886622, tzinfo=utc), verbose_name=b'Date Added'),
+            field=models.DateTimeField(default=datetime.datetime(2014, 12, 30, 3, 6, 0, 560821, tzinfo=utc), verbose_name=b'Date Added'),
             preserve_default=True,
         ),
     ]
