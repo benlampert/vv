@@ -1,0 +1,29 @@
+{% if vendor_eval_details %}
+
+    <table border="1">
+          <tr>
+    <th>Questions</th>
+{% regroup vendor_eval_details|dictsort:"vendor__vendor_name" by vendor__vendor_name as vendors %}    
+    {% for vendor in vendors %}
+    <th>{{vendor.grouper}}</th>
+    {% endfor %}
+
+  </tr>
+{% regroup vendor_eval_details|dictsort:"question__eval_question_name" by question__eval_question_name as evals %}
+    {% for question in evals %}
+   
+<tr>
+    
+    <td>  {{ question.grouper }}</td> 
+
+        {% for vendor in question.list %}
+  
+     <td> {{ vendor.answer }}</td>
+        {% endfor %}
+      </tr>  
+    {% endfor %}
+  </table>
+
+{% else %}
+    <p>No Evaluations are available.</p>
+{% endif %}

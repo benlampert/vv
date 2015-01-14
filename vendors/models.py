@@ -31,6 +31,7 @@ class Adserver(models.Model):
         verbose_name_plural = "Ad Servers"
         verbose_name = "Ad Server"
 
+
         
 class Vendor(models.Model):
     #picklist of vendor types
@@ -65,4 +66,3 @@ class Vendor(models.Model):
     class Meta:
         verbose_name_plural = "Platforms"
         verbose_name = "Platform"
-
