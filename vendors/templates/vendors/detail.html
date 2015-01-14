@@ -24,3 +24,9 @@
     <li><p>vendor external POV: </br>{{ vendor.vendor_external_pov |linebreaks }} </p></li>
     
 </ul>
+
+<ul>
+     {% for eval in vendor.vendor__VendorEvaluation.all %}
+     <li>{{eval}}</li>
+     {%endfor%}
+</ul>

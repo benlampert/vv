@@ -1,0 +1,9 @@
+{% if vendor_eval_list %}
+    <ul>
+    {% for evaluation in vendor_eval_list %}
+        <li><a href="/evaluations/{{evaluation.vendor__id }}/">{{ evaluation.vendor__vendor_name }} </a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Evaluations are available.</p>
+{% endif %}

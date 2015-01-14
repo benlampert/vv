@@ -13,7 +13,7 @@ class Section(models.Model):
 
 
 class Evaluations(models.Model):
-    eval_name = models.CharField(max_length=100, default="new evaluation")
+    eval_name = models.CharField(max_length=100, default="New Evaluation")
     added_sections = models.ManyToManyField(Section)
     
     def __str__(self):
@@ -35,7 +35,7 @@ class Question(models.Model):
         unique_together = [[ "eval_section", "question_order"]]
   
     def __str__(self):
-        return "%s: %s" % (self.eval_section, self.eval_question_name)
+        return "%s" % (self.eval_question_name)
 
 class VendorEvaluation(models.Model):
     vendor = models.ForeignKey(Vendor, related_name="evaluation")
@@ -50,8 +50,20 @@ class VendorEvaluation(models.Model):
 
 class Answer(models.Model):
     answer = models.FloatField(default=0.0)
-    question = models.ForeignKey(Question, related_name="answers")
-    vendor_evaluation = models.ForeignKey(VendorEvaluation, related_name="answers")
+    question = models.ForeignKey(Question, related_name="questions")
+    vendor_evaluation = models.ForeignKey(VendorEvaluation, related_name="vendor_eval")
 
     def __str__(self):
-        return "%s : %s" % (self.vendor_evaluation, self.answer)
+        return "%s : %s : %s" % (self.vendor_evaluation, self.question, self.answer)
+
+class MT_VendorAnswers(models.Model):
+    answer = models.FloatField(default=0.0)
+    question = models.ForeignKey(Question, related_name="question")
+    vendor = models.ForeignKey(Vendor, related_name="vendor")
+
+    def __str__(self):
+        return "%s : %s : %s" % (self.vendor, self.question, self.answer) 
+        
+    class Meta:
+        verbose_name_plural = "Vendor Answers"
+        verbose_name = "Vendor Answer"
