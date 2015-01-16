@@ -2,6 +2,6 @@
 Integrated Platforms</br>
 <ul>
     {% for vendor in adserver.vendor_set.all %}
-    <li>{{ vendor }} </li>
+    <li><a href="/vendors/{{vendor.id }}/">{{ vendor }} </a> </li>
     {% endfor %}
 </ul>
