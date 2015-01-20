@@ -1,0 +1,9 @@
+{% if latest_deal_list %}
+    <ul>
+    {% for deal in latest_deal_list %}
+        <li><a href="/deals/{{deal.id }}/">{{ deal }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No vendors are available.</p>
+{% endif %}
