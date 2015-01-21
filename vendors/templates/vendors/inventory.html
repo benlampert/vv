@@ -1,16 +1,37 @@
 
-{% if inventory_sources %}
-    <ul>
+{% extends "base.html" %}
+
+{% block content %}
+</br>
+<div class="panel panel-default">
+     <div class="panel-heading">
+    <h3 class="panel-title">Inventory</h3>
+  </div>
+      <div class="panel-body">
+    <ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="/deals">AOD Deals</a></li>
+  <li role="presentation"><a href="#">Site List Generator (QI)</a></li>
+</ul>
+    {% if inventory_sources %}
+    <table class="table table-striped">
+        <tr><th>Conduits</th><th>Integrated DSPs</th></tr>
     {% for source in inventory_sources %}
-        <li><a href="/inventory/{{source.id }}/">{{ source }}</a></li>
-        Integrated Platforms:
+        <tr><td><a href="/inventory/{{source.id }}/">{{ source }}</a></td>
+       <td>
         {% for vendor in source.vendor_set.all %}
-          <ul>
+          <ul  class="list-unstyled">
             <li>{{ vendor }} </li>
             </ul>
         {%endfor%}
+        </td>
+        </tr>
     {% endfor %}
-    </ul>
+   </table>
 {% else %}
     <p>No vendors are available.</p>
 {% endif %}
+
+  </div>
+</div>
+{% endblock %}

@@ -16,7 +16,7 @@ class VendorListView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published vendors."""
-        return Vendor.objects.order_by('-added_date')[:5]
+        return Vendor.objects.order_by('vendor_name')
 
 
 class VendorDetailView(generic.DetailView):

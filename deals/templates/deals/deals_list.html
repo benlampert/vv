@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+</br>
+<div class="panel panel-default">
+     <div class="panel-heading">
+    <h3 class="panel-title">Inventory</h3>
+  </div>
+      <div class="panel-body">
+              <ul class="nav nav-tabs">
+  <li role="presentation" ><a href="/inventory">Home</a></li>
+  <li role="presentation" class="active"><a href="#">AOD Deals</a></li>
+  <li role="presentation"><a href="#">Site List Generator (QI)</a></li>
+</ul>
+    {% if latest_deal_list %}
+ <table class="table table-striped">
+        <tr><th>Deals</th></tr>
+    {% for deal in latest_deal_list %}
+         <tr><td><a href="/deals/{{deal.id }}/">{{ deal }}</a></td></tr>
+         
+    {% endfor %}
+      </table>
+{% else %}
+    <p>No vendors are available.</p>
+{% endif %}  
+
+</div>
+</div>
+{% endblock %}

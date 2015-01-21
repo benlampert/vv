@@ -1,7 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+</br>
+<div class="panel panel-default">
+      <div class="panel-body">
+          
 <h1>{{ data_source.data_source_name }}</h1>
 Integrated Platforms</br>
-<ul>
+<ul class="list-unstyled">
     {% for vendor in data_source.vendor_set.all %}
-    <li>{{ vendor }} </li>
+    <li><a href="/vendors/{{vendor.id }}/">{{ vendor }} </a> </li>
     {% endfor %}
 </ul>
+
+  </div>
+</div>
+{% endblock %}
