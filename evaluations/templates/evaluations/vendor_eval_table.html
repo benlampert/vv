@@ -1,6 +1,15 @@
-{% if vendor_eval_details %}
 
-    <table border="1">
+{% extends "base.html" %}
+
+{% block content %}
+</br>
+<div class="panel panel-default">
+     <div class="panel-heading">
+    <h3 class="panel-title">Evaluations</h3>
+      </div>
+    {% if vendor_eval_details %}
+  <div class="panel-body">
+    <table class="table table-striped">
           <tr>
     <th>Questions</th>
 {% regroup vendor_eval_details|dictsort:"vendor__vendor_name" by vendor__vendor_name as vendors %}    
@@ -27,3 +36,6 @@
 {% else %}
     <p>No Evaluations are available.</p>
 {% endif %}
+  </div>
+</div>
+{% endblock %}

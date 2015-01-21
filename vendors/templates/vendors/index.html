@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+
 {% if latest_vendor_list %}
     <ul>
     {% for vendor in latest_vendor_list %}
@@ -7,3 +10,5 @@
 {% else %}
     <p>No vendors are available.</p>
 {% endif %}
+
+{% endblock %}

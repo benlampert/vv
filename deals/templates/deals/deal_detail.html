@@ -1,5 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+</br>
+<div class="panel panel-default">
+      <div class="panel-body">
+
 <h1>{{deals.site_name}} - {{ deals.deal_name  }} - {{ deals.size }}</h1>
-<ul>
+<ul class="list-unstyled">
     <li>Deal ID: {{ deals.deal_ID_input }}</li>
     <li>Platform: {{ deals.integrated_dsp }}</li>
     <li>Conduit: {{ deals.integrated_conduit }}</li>    
@@ -15,3 +22,6 @@
     </ul>
     </li>
 </ul>
+  </div>
+</div>
+{% endblock %}

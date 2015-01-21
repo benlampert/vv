@@ -1,16 +1,32 @@
 
-{% if data_sources %}
-    <ul>
+
+{% extends "base.html" %}
+
+{% block content %}
+</br>
+<div class="panel panel-default">
+     <div class="panel-heading">
+    <h3 class="panel-title">Inventory</h3>
+  </div>
+      <div class="panel-body">
+          
+    {% if data_sources %}
+    <table class="table table-striped">
+        <tr><th>Data Sources</th><th>Integrated DSPs</th></tr>
     {% for source in data_sources %}
-        <li><a href="/data/{{source.id }}/">{{ source }}</a></li>
-        Integrated Platforms:
-        {% for vendor in source.vendor_set.all %}
-          <ul>
+         <tr><td><a href="/data/{{source.id }}/">{{ source }}</a></td>
+       <td>        {% for vendor in source.vendor_set.all %}
+          <ul class="list-unstyled">
             <li>{{ vendor }} </li>
             </ul>
         {%endfor%}
+           </td>
+        </tr>
     {% endfor %}
-    </ul>
+     </table>
 {% else %}
     <p>No vendors are available.</p>
 {% endif %}
+  </div>
+</div>
+{% endblock %}
