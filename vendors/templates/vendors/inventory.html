@@ -21,7 +21,7 @@
        <td>
         {% for vendor in source.vendor_set.all %}
           <ul  class="list-unstyled">
-            <li>{{ vendor }} </li>
+            <li><a href="/vendors/{{vendor.id}}">{{ vendor }}</a> </li>
             </ul>
         {%endfor%}
         </td>

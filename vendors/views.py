@@ -28,7 +28,7 @@ class InventoryListView(generic.ListView):
     context_object_name = 'inventory_sources'
     
     def get_queryset(self):
-        return Inventory.objects.all()
+        return Inventory.objects.order_by('inventory_name')
 
 class DataListView(generic.ListView):
     template_name = 'vendors/data.html'
