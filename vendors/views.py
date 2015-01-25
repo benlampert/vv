@@ -16,7 +16,7 @@ class VendorListView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published vendors."""
-        return Vendor.objects.order_by('-added_date')[:5]
+        return Vendor.objects.order_by('vendor_name')
 
 
 class VendorDetailView(generic.DetailView):
@@ -28,7 +28,7 @@ class InventoryListView(generic.ListView):
     context_object_name = 'inventory_sources'
     
     def get_queryset(self):
-        return Inventory.objects.all()
+        return Inventory.objects.order_by('inventory_name')
 
 class DataListView(generic.ListView):
     template_name = 'vendors/data.html'
