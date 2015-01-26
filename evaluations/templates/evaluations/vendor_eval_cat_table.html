@@ -7,32 +7,32 @@
      <div class="panel-heading">
     <h3 class="panel-title">Evaluations</h3>
       </div>
-    {% if vendor_eval_details %}
+    {% if vendor_eval_cat %}
   <div class="panel-body">
     <ul class="nav nav-tabs">
-  <li role="presentation" ><a href="/evaluations/category">Category Index</a></li>
-  <li role="presentation" class="active"><a href="/evaluations">Details</a></li>
+  <li role="presentation" class="active"><a href="#">Category Index</a></li>
+  <li role="presentation" ><a href="/evaluations">Details</a></li>
   <!--<li role="presentation"><a href="/evaluations/category>Category Index</a></li>-->
 </ul>      
     <table class="table table-striped">
           <tr>
-    <th>Questions</th>
-{% regroup vendor_eval_details|dictsort:"vendor__vendor_name" by vendor__vendor_name as vendors %}    
+    <th>Sections</th>
+{% regroup vendor_eval_cat|dictsort:"vendor__vendor_name" by vendor__vendor_name as vendors %}    
     {% for vendor in vendors %}
     <th>{{vendor.grouper}}</th>
     {% endfor %}
 
   </tr>
-{% regroup vendor_eval_details|dictsort:"question__eval_question_name" by question__eval_question_name as evals %}
-    {% for question in evals %}
+{% regroup vendor_eval_cat|dictsort:"question__eval_section__section_name" by question__eval_section__section_name as evals %}
+    {% for section in evals %}
    
 <tr>
     
-    <td>  {{ question.grouper }}</td> 
+    <td>  {{ section.grouper }}</td> 
 
-        {% for vendor in question.list %}
+        {% for answer in section.list %}
   
-     <td> {{ vendor.answer }}</td>
+     <td> {{ answer.score }}</td>
 
         {% endfor %}
       </tr>  

@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.db.models import Sum
 
 from evaluations.models import Evaluations, Section, Question, VendorEvaluation, MT_VendorAnswers
 
@@ -29,4 +30,10 @@ class EvaluationDetailView(generic.ListView):
     def get_queryset(self):
         return MT_VendorAnswers.objects.values('vendor__vendor_name', 'question__eval_question_name', 'answer', 'question__eval_section__section_name').order_by('vendor__vendor_name')
 
+class EvaluationCategoryIndexView(generic.ListView):
+    template_name = 'evaluations/vendor_eval_cat_table.html'
+    context_object_name = 'vendor_eval_cat'
+    
+    def get_queryset(self):
+        return MT_VendorAnswers.objects.values('vendor__vendor_name', 'question__eval_section__section_name').annotate(score=Sum('answer')).order_by('vendor')
     
