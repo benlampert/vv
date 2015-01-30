@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'vendors',
     'evaluations',
     'deals',
+    'tabletest',
+    'django_tables2',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,6 +72,11 @@ DATABASES = {
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'vv/templates'),
 ) 
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request'
+    )
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 

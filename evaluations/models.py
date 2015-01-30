@@ -65,5 +65,5 @@ class MT_VendorAnswers(models.Model):
         return "%s : %s : %s" % (self.vendor, self.question, self.answer) 
         
     class Meta:
-        verbose_name_plural = "Vendor Answers"
-        verbose_name = "Vendor Answer"
+        verbose_name_plural = "Vendor Eval Answers"
+        verbose_name = "Vendor Eval Answer"

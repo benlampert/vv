@@ -8,3 +8,8 @@ admin.site.register(Vendor)
 admin.site.register(Inventory)
 admin.site.register(Data_Source)
 admin.site.register(Adserver)
+
+class EvalAdmin(admin.ModelAdmin):
+    filter_horizontal = ('Inventory_Source',)
+    
+    

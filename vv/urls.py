@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^data/', include('vendors.urls')),
     url(r'^evaluations/', include('evaluations.urls')),
     url(r'^deals/', include('deals.urls')),
+    url(r'^table/', include('tabletest.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
