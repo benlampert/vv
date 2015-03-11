@@ -7,27 +7,10 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vendors', '0035_auto_20150118_1527'),
+        ('vendors', '0047_auto_20150204_2357'),
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Deals',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('deal_name', models.CharField(max_length=200)),
-                ('deal_ID_input', models.CharField(max_length=200)),
-                ('price_q1', models.FloatField(default=0.0)),
-                ('price_q2', models.FloatField(default=0.0)),
-                ('price_q3', models.FloatField(default=0.0)),
-                ('price_q4', models.FloatField(default=0.0)),
-            ],
-            options={
-                'verbose_name': 'Deal',
-                'verbose_name_plural': 'Deals',
-            },
-            bases=(models.Model,),
-        ),
         migrations.CreateModel(
             name='DealTypes',
             fields=[
@@ -131,42 +114,6 @@ class Migration(migrations.Migration):
             model_name='site',
             name='publisher',
             field=models.ForeignKey(related_name='publisher', to='deals.Publisher'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='deals',
-            name='deal_type',
-            field=models.ForeignKey(related_name='deal_types', to='deals.DealTypes'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='deals',
-            name='integrated_conduit',
-            field=models.ForeignKey(related_name='conduit', to='vendors.Inventory'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='deals',
-            name='integrated_dsp',
-            field=models.ForeignKey(related_name='dsp', to='vendors.Vendor'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='deals',
-            name='price_model',
-            field=models.ForeignKey(related_name='price_models', to='deals.PriceModels'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='deals',
-            name='site_name',
-            field=models.ForeignKey(related_name='deal_site', to='deals.Site'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='deals',
-            name='size',
-            field=models.ForeignKey(related_name='sizes', to='deals.Size'),
             preserve_default=True,
         ),
     ]

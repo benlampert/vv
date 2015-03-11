@@ -9,15 +9,23 @@
   </div>
       <div class="panel-body">
               <ul class="nav nav-tabs">
-  <li role="presentation" ><a href="/inventory">Home</a></li>
-  <li role="presentation" class="active"><a href="#">AOD Deals</a></li>
+  <li role="presentation" ><a href="/inventory">Open Exchanges</a></li>
+  <li role="presentation" class="active"><a href="#">Direct Publishers</a></li>
   <li role="presentation"><a href="#">Site List Generator (QI)</a></li>
 </ul>
-    {% if latest_deal_list %}
+    {% if pubs_list %}
  <table class="table table-striped">
-        <tr><th>Deals</th></tr>
-    {% for deal in latest_deal_list %}
-         <tr><td><a href="/deals/{{deal.id }}/">{{ deal }}</a></td></tr>
+        <tr><th>Deals</th><th>Preferred Conduit</th><th>Category</th><th>Price Range</th><th>AOD Wide Avail.</th></tr>
+    {% for pub in pubs_list %}
+         <tr>
+             <td><a href="/deals/{{pub.id }}/">{{ pub.site_name }}</a></td>
+             <td>{{ pub.preferred_conduit }}</td>
+             <td> {{ pub.iab_category }}</td>
+             <td>${{ pub.price_range_min }} - ${{ pub.price_range_max }} cpm</td>
+             <td>{{ pub.aod_wide_deals }}</td>
+             
+         
+         </tr>
          
     {% endfor %}
       </table>

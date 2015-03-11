@@ -88,29 +88,21 @@ class Site(models.Model):
     	verbose_name = "Site"
     	verbose_name_plural = "Sites"
     	
+class Sites(models.Model):
+    site_name = models.CharField(max_length=200)
+    publisher = models.ForeignKey(Publisher, related_name="parent_publisher")
+    iab_category = models.ForeignKey(IabMainCategory)
+    available_sizes = models.ManyToManyField(Size)
+    aod_wide_deals = models.BooleanField('AOD-wide Deals Available', default=0)
+    price_range_min = models.DecimalField(max_digits=6, decimal_places=2,default=0.00)
+    price_range_max = models.DecimalField(max_digits=6, decimal_places=2,default=0.00)
+    site_internal_pov = models.TextField('Internal POV', max_length=1000, default='empty')
+    preferred_conduit = models.ForeignKey(Inventory, default=1)
+    min_spend = models.CharField(max_length=200, default="none")
 
-class Deals(models.Model):
-	deal_name = models.CharField(max_length=200)
-	deal_ID_input = models.CharField(max_length=200)
-	site_name = models.ForeignKey(Site, related_name="deal_site")
-	size = models.ForeignKey(Size, related_name="sizes")
-	price_model= models.ForeignKey(PriceModels, related_name="price_models")
-	price_q1 = models.DecimalField(max_digits=6, decimal_places=2,default=0.00)
-	price_q2 = models.DecimalField(max_digits=6, decimal_places=2,default=0.00)
-	price_q3 = models.DecimalField(max_digits=6, decimal_places=2,default=0.00)
-	price_q4 = models.DecimalField(max_digits=6, decimal_places=2,default=0.00)
-	integrated_dsp = models.ForeignKey(Vendor, related_name="dsp")
-	integrated_conduit = models.ForeignKey(Inventory, related_name="conduit")
-	deal_type = models.ForeignKey(DealTypes, related_name="deal_types")
-	is_aod_wide = models.BooleanField('AOD-wide Deal', default=0)
+    class Meta:
+    	verbose_name = "Site"
+    	verbose_name_plural = "Sites"
 
-
-	def __str__(self):
-		return "%s - %s - %s - %s - %s" % (self.site_name, self.deal_name, self.size, self.integrated_dsp, self.integrated_conduit)
-
-	class Meta:
-		verbose_name = "Deal"
-		verbose_name_plural = "Deals"
-  
-
-       
+    def __str__(self):
+    	return self.site_name

@@ -5,22 +5,14 @@
 <div class="panel panel-default">
       <div class="panel-body">
 
-<h1>{{deals.site_name}} - {{ deals.deal_name  }} - {{ deals.size }}</h1>
+<h1>{{sites.site_name}}</h1>
 <ul class="list-unstyled">
-    <li>Deal ID: {{ deals.deal_ID_input }}</li>
-    <li>Platform: {{ deals.integrated_dsp }}</li>
-    <li>Conduit: {{ deals.integrated_conduit }}</li>    
-    <li>Price Model: {{ deals.price_model }}</li>    
-    <li>Deal Type: {{ deals.deal_type }}</li>
-    <li>AOD Wide Deal: {{ deals.is_aod_wide }}</li>
-    <li>pricing
-    <ul>
-    <li>Price Q1: {{ deals.price_q1 }}</li>    
-    <li>Price Q2: {{ deals.price_q2 }}</li>    
-    <li>Price Q3: {{ deals.price_q3 }}</li>    
-    <li>Price Q4: {{ deals.price_q4 }}</li>
-    </ul>
-    </li>
+    <li>Publisher: {{ sites.publisher  }}</li>
+    <li>Conduit: <a href="/inventory/{{sites.id }}/">{{ sites.preferred_conduit }}</a></li>    
+    <li>AOD Wide Deal Available:  {{ sites.is_aod_wide }}</li>
+    <li>Price Range: ${{ sites.price_range_min }} - ${{ sites.price_range_max }} cpm </li>
+    <li>Spend Minimum: {{ sites.min_spend }} </li>
+    <li>Description: {{ sites.site_internal_pov }} </li>
 </ul>
   </div>
 </div>
