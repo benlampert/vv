@@ -14,14 +14,6 @@ class EvaluationListView(generic.ListView):
     def get_queryset(self):
         """Return all the evaluations."""
         return MT_VendorAnswers.objects.values('vendor__vendor_name', 'vendor__id').order_by('vendor_id').distinct()
-        
-# class EvaluationDetailView(generic.DetailView):
-#     template_name = 'evaluations/vendor_eval_details.html'
-#     context_object_name = 'answers'
-
-#     def get_queryset(self):
-#         """Return all the evaluations."""
-#         return MT_VendorAnswers.objects.values('question__eval_question_name').order_by('question_id').distinct()
 
 class EvaluationDetailView(generic.ListView):
     template_name = 'evaluations/vendor_eval_table.html'
@@ -36,4 +28,10 @@ class EvaluationCategoryIndexView(generic.ListView):
     
     def get_queryset(self):
         return MT_VendorAnswers.objects.values('vendor__vendor_name', 'question__eval_section__section_name').annotate(score=Sum('answer')).order_by('vendor')
+
+class EvaluationMarketingIndexView(generic.ListView):
+    template_name = 'evaluations/vendor_eval_marketing_table.html'
+    context_object_name = 'vendor_eval_marketing'
     
+    def get_queryset(self):
+        return MT_VendorAnswers.objects.filter(question__for_marketing=1).values('vendor__vendor_name', 'question__eval_question_name', 'answer', 'question__eval_section__section_name').order_by('vendor__vendor_name')

@@ -1,7 +1,3 @@
-<!--<h1>{{ mt_vendoranswers.vendor }}</h1>-->
-<!--<h2>{{ mt_vendoranswers.question.eval_section }}</h2>-->
-<!--<h3>{{mt_vendoranswers.question }} {{ mt_vendoranswers.answer }} </h3>-->
-
 {% if vendor_eval_details %}
 {% regroup vendor_eval_details|dictsort:"question__eval_question_name" by question__eval_question_name as evals %}
     <ul>

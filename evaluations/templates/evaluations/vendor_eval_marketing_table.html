@@ -7,23 +7,25 @@
      <div class="panel-heading">
     <h3 class="panel-title">Evaluations</h3>
       </div>
-    {% if vendor_eval_details %}
-  <div class="panel-body">
+
+    <div class="panel-body">
     <ul class="nav nav-tabs">
   <li role="presentation" ><a href="/evaluations/category">Category Index</a></li>
-  <li role="presentation" class="active"><a href="#">Details</a></li>
-  <li role="presentation" ><a href="/evaluations/marketing">Marketing Features</a></li>
+  <li role="presentation" ><a href="/evaluations">Details</a></li>
+  <li role="presentation" class="active"><a href="#">Marketing Features</a></li>
+  
 </ul>      
+{% if vendor_eval_marketing %}
     <table class="table table-striped">
           <tr>
     <th>Questions</th>
-{% regroup vendor_eval_details|dictsort:"vendor__vendor_name" by vendor__vendor_name as vendors %}    
+{% regroup vendor_eval_marketing|dictsort:"vendor__vendor_name" by vendor__vendor_name as vendors %}    
     {% for vendor in vendors %}
     <th>{{vendor.grouper}}</th>
     {% endfor %}
 
   </tr>
-{% regroup vendor_eval_details|dictsort:"question__eval_question_name" by question__eval_question_name as evals %}
+{% regroup vendor_eval_marketing|dictsort:"question__eval_question_name" by question__eval_question_name as evals %}
     {% for question in evals %}
    
 <tr>
