@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 
 from vendors.models import Vendor, Inventory, Data_Source, Adserver
+# from evaluations.models import MT_VendorAnswers
 # Create your views here.
 # class IndexView(generic.ListView):
 
@@ -15,7 +16,7 @@ class VendorListView(generic.ListView):
     context_object_name = 'latest_vendor_list'
 
     def get_queryset(self):
-        """Return the last five published vendors."""
+        
         return Vendor.objects.order_by('vendor_name')
 
 
@@ -49,4 +50,10 @@ class DataDetailView(generic.DetailView):
 class AdserverDetailView(generic.DetailView):
     model = Adserver
     template_name = 'vendors/adserver_detail.html'
-    
+
+# class VendorEvalatuationView(generic.ListView):
+#   template_name = 'vendors/vendor_evaluation.html'
+#   context_object_name = 'vendor_eval'
+   
+#   def get_queryset(self):
+#       return MT_VendorAnswers.objects.filter(vendor_id=id)
