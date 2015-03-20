@@ -50,10 +50,3 @@ class DataDetailView(generic.DetailView):
 class AdserverDetailView(generic.DetailView):
     model = Adserver
     template_name = 'vendors/adserver_detail.html'
-
-# class VendorEvalatuationView(generic.ListView):
-#   template_name = 'vendors/vendor_evaluation.html'
-#   context_object_name = 'vendor_eval'
-   
-#   def get_queryset(self):
-#       return MT_VendorAnswers.objects.filter(vendor_id=id)
