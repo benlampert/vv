@@ -19,6 +19,13 @@ class VendorListView(generic.ListView):
         
         return Vendor.objects.order_by('vendor_name')
 
+class VerifiedVendorListView(generic.ListView):
+    template_name = 'vendors/verified_vendors.html'
+    context_object_name = 'verified_vendors'
+
+    def get_queryset(self):
+        
+        return Vendor.objects.filter(vv_contract=1).order_by('vendor_name')
 
 class VendorDetailView(generic.DetailView):
     model = Vendor
@@ -50,10 +57,3 @@ class DataDetailView(generic.DetailView):
 class AdserverDetailView(generic.DetailView):
     model = Adserver
     template_name = 'vendors/adserver_detail.html'
-
-# class VendorEvalatuationView(generic.ListView):
-#   template_name = 'vendors/vendor_evaluation.html'
-#   context_object_name = 'vendor_eval'
-   
-#   def get_queryset(self):
-#       return MT_VendorAnswers.objects.filter(vendor_id=id)
