@@ -16,19 +16,7 @@ class VendorListView(generic.ListView):
     context_object_name = 'latest_vendor_list'
 
     def get_queryset(self):
-<<<<<<< HEAD
-=======
-        
->>>>>>> dev
         return Vendor.objects.order_by('vendor_name')
-        
-
-class VendorVVListView(generic.ListView):
-    template_name = 'vendors/vendors_vv.html'
-    context_object_name = 'vv_vendor_list'
-
-    def get_queryset(self):
-        return Vendor.objects.filter(vv_contract=1).order_by('vendor_name')
         
 
 class VerifiedVendorListView(generic.ListView):

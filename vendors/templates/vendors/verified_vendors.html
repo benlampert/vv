@@ -17,7 +17,7 @@
         <tr><th>Platforms</th><th>Description</th></tr>
     {% for vendor in verified_vendors %}
         <tr><td><a href="/vendors/{{vendor.id }}/">{{ vendor.vendor_name }}</a></li></td>
-       
+     
         <td>{{ vendor.vendor_blurb }}</td>
         </tr>
     {% endfor %}
