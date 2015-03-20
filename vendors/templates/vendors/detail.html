@@ -33,9 +33,9 @@
 </ul>
 
 <ul>
-     {% for eval in vendor.vendor__VendorEvaluation.all %}
-     <li>{{eval}}</li>
-     {%endfor%}
+     
+     <li><a href="/evaluations/vendors/{{ vendor.id }}">{{vendor.vendor_name}} detailed evaluation</a></li>
+ 
 </ul>
   </div>
 </div>

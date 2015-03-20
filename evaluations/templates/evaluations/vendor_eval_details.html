@@ -1,23 +1,46 @@
-<!--<h1>{{ mt_vendoranswers.vendor }}</h1>-->
-<!--<h2>{{ mt_vendoranswers.question.eval_section }}</h2>-->
-<!--<h3>{{mt_vendoranswers.question }} {{ mt_vendoranswers.answer }} </h3>-->
+{% extends "base.html" %}
 
-{% if vendor_eval_details %}
-{% regroup vendor_eval_details|dictsort:"question__eval_question_name" by question__eval_question_name as evals %}
-    <ul>
-    {% for question in evals %}
+{% block content %}
+</br>
+    {% if vendor_eval %}
+<div class="panel panel-default">
+     <div class="panel-heading">
+         {% with vendor_eval|first as vendor %}
+    <h3 class="panel-title"> {{vendor.vendor}} Evaluation</h3>
+          
+          
+  </div>
+      <div class="panel-body">
+   <a href="/vendors/{{vendor.vendor_id}}">< Back to {{vendor.vendor}} Details</a>
+           {%endwith %}
    
-      <li>{{ question.grouper }}</li>
-      <ul>
-        {% for vendor in question.list %}
-        <ul>
-            <li>{{ vendor.vendor__vendor_name }}: {{ vendor.answer }}</li>
-        </ul>
-        {% endfor %}
-      </ul>
+   <table class="table table-striped">
+          <tr>
+    
+    <th>Section</th>
+
+    <th>Questions</th>
+
+    <th>Answers</th>
+   
+
+  </tr>
+
+   {% for eval in vendor_eval %}
+<tr>
+    <td>  {{ eval.question.eval_section.section_name }}</td> 
+    <td>  {{ eval.question }}</td> 
+    <td> {{ eval.answer }}</td>
+
+     </tr>  
     {% endfor %}
-    </ul>
+  </table>
 
 {% else %}
-    <p>No Evaluations are available.</p>
+    <p>No evaluations are available.</p>
 {% endif %}
+
+  </div>
+  
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ from vendors import views
 urlpatterns = patterns('',
     #url(r'^$', views.IndexView, name='index'),
     url(r'^$', views.VendorListView.as_view(), name='vendors'),    
+    url(r'^verified/$', views.VerifiedVendorListView.as_view(), name='verified_vendors'),
     url(r'^vendors/$', views.VendorListView.as_view(), name='vendors'),
     url(r'^vendors/vv$', views.VendorVVListView.as_view(), name='vv_vendors'),
     url(r'^(?P<pk>\d+)/$', views.VendorDetailView.as_view(), name='detail'),

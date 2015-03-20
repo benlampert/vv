@@ -8,18 +8,14 @@
     </div>
       <div class="panel-body">
     <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Browse A-Z</a></li>
-<<<<<<< HEAD
-  <li role="presentation"><a href="/vendors/vv">Vivaki Verified Platforms</a></li>
-=======
-  <li role="presentation"><a href="/verified">Vivaki Verified Platforms</a></li>
->>>>>>> dev
+  <li role="presentation" ><a href="/vendors">Browse A-Z</a></li>
+  <li role="presentation" class="active"><a href="#">Vivaki Verified Platforms</a></li>
   <li role="presentation"><a href="#">Submit New Vendor</a></li>
 </ul>          
-{% if latest_vendor_list %}
+{% if verified_vendors %}
     <table class="table table-striped">
         <tr><th>Platforms</th><th>Description</th></tr>
-    {% for vendor in latest_vendor_list %}
+    {% for vendor in verified_vendors %}
         <tr><td><a href="/vendors/{{vendor.id }}/">{{ vendor.vendor_name }}</a></li></td>
        
         <td>{{ vendor.vendor_blurb }}</td>
